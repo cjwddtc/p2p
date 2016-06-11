@@ -1,0 +1,7 @@
+add_compile_options("-std=c++14")
+set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
+set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
+add_library(asd service.cpp service.hpp session.hpp session.cpp)
+target_link_libraries(asd boost_system-mt ws2_32 mswsock boost_thread-mt)
+add_executable(test test.cpp)
+target_link_libraries(test asd)
